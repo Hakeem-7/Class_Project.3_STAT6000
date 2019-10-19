@@ -157,8 +157,8 @@ boxplot(origin~mpg01, data = Auto, main = "Origin vs mpg01", col = "Violet")
 # "horsepower," "year," "acceleration," and "displacement."
 
 # Q11(c) - split the data into training and testing sets
-
-train = (year %% 2 == 0)
+set.seed(107)
+train = (year %% 2 == 0) ##modular division which seperates the dataset into even and odds.
 Auto.train = Auto[train, ]
 Auto.test = Auto[!train, ]
 mpg01.test <- mpg01[!train]
@@ -197,30 +197,30 @@ mean(glm.pred2 != mpg01.test)
 
 # Q11(g) - KNN
 # K = 1
+set.seed(107)
 train.X1 = cbind(weight,acceleration,horsepower,displacement,year)[train,]
 test.X1 = cbind(weight,acceleration,horsepower,displacement,year)[!train,]
 train.mpg01 = mpg01[train]
-set.seed(7)
 knn.pred3 = knn(train.X1, test.X1, train.mpg01, k = 1)
 table(knn.pred3, mpg01.test)
 mean(knn.pred3 != mpg01.test)
 #Test error is approx. 15.4%
 
 # K = 10
+set.seed(107)
 train.X1 = cbind(weight,acceleration,horsepower,displacement,year)[train,]
 test.X1 = cbind(weight,acceleration,horsepower,displacement,year)[!train,]
 train.mpg01 = mpg01[train]
-set.seed(7)
 knn.pred4 = knn(train.X1, test.X1, train.mpg01, k = 10)
 table(knn.pred4, mpg01.test)
 mean(knn.pred4 != mpg01.test)
 #Test error is approx. 15.9%
 
 # K = 100
+set.seed(107)
 train.X1 = cbind(weight,acceleration,horsepower,displacement,year)[train,]
 test.X1 = cbind(weight,acceleration,horsepower,displacement,year)[!train,]
 train.mpg01 = mpg01[train]
-set.seed(7)
 knn.pred5 = knn(train.X1, test.X1, train.mpg01, k = 100)
 table(knn.pred5, mpg01.test)
 mean(knn.pred5 != mpg01.test)
